@@ -2,8 +2,8 @@ package ujson
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"fmt"
+	"io/ioutil"
 )
 
 func ToJsonString(any interface{}) (result string) {
