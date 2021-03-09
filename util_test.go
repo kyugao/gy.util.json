@@ -12,5 +12,5 @@ var Config struct {
 
 func TestLoadConfig(t *testing.T) {
 	FromFile("./config.json", &Config)
-	t.Log("Config = %s.\n", ToJsonString(&Config))
+	t.Logf("Config = %s.\n", ToJsonRawString(&Config))
 }

@@ -20,6 +20,20 @@ func ToJsonString(any interface{}) (result string) {
 	return
 }
 
+func ToJsonRawString(any interface{}) (result string) {
+	if any == nil {
+		result = ""
+	} else {
+		bytes, err := json.Marshal(any)
+		if err == nil {
+			result = string(json.RawMessage(bytes))
+		} else {
+			result = ""
+		}
+	}
+	return
+}
+
 func ToJsonByte(any interface{}) (result []byte) {
 	if any == nil {
 	} else {
