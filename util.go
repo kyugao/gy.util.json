@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"strings"
 )
 
 func ToJsonString(any interface{}) (result string) {
@@ -26,7 +27,7 @@ func ToJsonRawString(any interface{}) (result string) {
 	} else {
 		bytes, err := json.Marshal(any)
 		if err == nil {
-			result = string(json.RawMessage(bytes))
+			result = strings.ReplaceAll(string(bytes), "\\\"", "\"")
 		} else {
 			result = ""
 		}
