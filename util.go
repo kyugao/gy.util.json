@@ -22,16 +22,8 @@ func ToJsonString(any interface{}) (result string) {
 }
 
 func ToJsonRawString(any interface{}) (result string) {
-	if any == nil {
-		result = ""
-	} else {
-		bytes, err := json.Marshal(any)
-		if err == nil {
-			result = strings.ReplaceAll(string(bytes), "\\\"", "\"")
-		} else {
-			result = ""
-		}
-	}
+	result = ToJsonString(json.RawMessage(ToJsonByte(any)))
+	result = strings.ReplaceAll(result, "\\\"", "\"")
 	return
 }
 
